@@ -1,4 +1,7 @@
-﻿using Furni.Models;
+﻿using Furni.DataBAse;
+using Furni.Entities;
+using Furni.Models;
+using Furni.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,17 +10,25 @@ namespace Furni.Controllers
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
-
-		public HomeController(ILogger<HomeController> logger)
+		private readonly FurniContext _furnicontext;
+		public HomeController(ILogger<HomeController> logger , FurniContext context)
 		{
 			_logger = logger;
+			_furnicontext = context;
 		}
 
 		public IActionResult Index()
 		{
-			return View();
-		}
+			HomeViewModel model = new HomeViewModel();
+			List<Cart> data = _furnicontext.Carts.ToList();
 
+            List<TestiMonials> testis = _furnicontext.TestiMonial.ToList();
+			model.cart = data;
+			model.testiMonials = testis;
+
+            return View(model);
+		}
+	 
 		public IActionResult Privacy()
 		{
 			return View();

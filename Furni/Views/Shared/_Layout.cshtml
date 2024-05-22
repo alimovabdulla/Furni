@@ -21,10 +21,10 @@
 	<meta name="keywords" content="bootstrap, bootstrap4" />
 
 	<!-- Bootstrap CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-	<link href="css/tiny-slider.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
+	<link href="~/css/bootstrap.min.css" rel="stylesheet">
+	<link href="~/../../cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	<link href ="~/css/tiny-slider.css" rel="stylesheet">
+	<link href="~/css/style.css" rel="stylesheet">
 	<title>@ViewData["Title"]  </title>
 </head>
 
@@ -34,7 +34,7 @@
 	<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
 
 		<div class="container">
-			<a class="navbar-brand" href="index-2.html">Furni<span>.</span></a>
+			<a class="navbar-brand" asp-controller="Home" asp-action="index">Furni<span>.</span></a>
 
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -45,7 +45,9 @@
 					<li class="nav-item active">
 						<a class="nav-link" asp-controller="Home" asp-action="index" >Home</a>
 					</li>
-					<li><a class="nav-link"  asp-controller="Shop" asp-action="index" >Shop</a></li>
+                    <li><a class="nav-link" asp-controller="Shop" asp-action="index"> Shop</a></li>
+					 
+					<li><a class="nav-link" asp-controller="Operations" asp-action="index">Add Product</a></li>
 					<li><a class="nav-link" asp-controller="About" asp-action="index">About us</a></li>
 					<li><a class="nav-link" asp-controller="Services" asp-action="index">Services</a></li>
 					<li><a class="nav-link" asp-controller="Blog" asp-action="index">Blog</a></li>
@@ -53,7 +55,7 @@
 				</ul>
 
 				<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
-					<li><a class="nav-link" asp-controller="register" asp-action="index"><img src="images/user.svg"></a></li>
+					<li><a class="nav-link" asp-controller="register" asp-action="login"><img src="images/user.svg"></a></li>
 					<li><a class="nav-link"  asp-controller="cart"  asp-action="index"><img src="images/cart.svg"></a></li>
 				</ul>
 			</div>
@@ -66,9 +68,7 @@
 	<footer class="footer-section">
 		<div class="container relative">
 
-			<div class="sofa-img">
-				<img src="images/sofa.png" alt="Image" class="img-fluid">
-			</div>
+			 
 
 			<div class="row">
 				<div class="col-lg-8">

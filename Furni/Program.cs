@@ -1,5 +1,29 @@
-var builder = WebApplication.CreateBuilder(args);
+using Furni.DataBAse;
+using Furni.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<FurniContext>(opt =>
+{
+
+	opt.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
+
+});
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequiredLength = 6;
+    opt.Password.RequiredUniqueChars = 0;
+    opt.Password.RequireUppercase = false;
+
+
+}).AddDefaultTokenProviders().AddEntityFrameworkStores<FurniContext>();
+
+ 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

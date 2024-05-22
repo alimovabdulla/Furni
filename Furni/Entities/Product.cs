@@ -7,5 +7,6 @@
         public string  StockCount  { get; set; }
         public string CostPrice { get; set; }
         public double SalePrice { get; set; }
+        public string ImgUrl { get; set; }  
     }
 }
